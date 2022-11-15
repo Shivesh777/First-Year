@@ -1,0 +1,93 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+
+\title{CSC110 Fall 2022 Assignment 1: Written Questions}
+\author{Shivesh Prakash}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Part 1: Data and Comprehensions}
+
+\begin{enumerate}
+\item[1.] \textbf{Imagine this scenario...}
+\begin{enumerate}
+\item[(a)] (The total amount of money you're planning to spend on your trip.)
+
+\texttt{float}: I would use floats to represent my total budget because the value is probably going to contain decimals, especially because of converting Euros to Canadian Dollars. Another idea here could be to use strings to avoid confusion regarding currencies; such as \texttt{"\$10"} or \texttt{"€10"}. But I consider this selection inferior because it limits arithmetic operations such as addition and subtraction, which could be crucial in our program.
+
+\item[(b)] (The restaurant names in your sister's ``top ten restaurants'' message, in the order of her preferences.)
+
+\texttt{list}: I would use lists to store this data because lists are an unbound ordered collection. A slight inconvenience here would be that I would see the 4th best restaurant when I input \texttt{list[3]}, hoping to see the third best one. But this problem can be resolved by a simple self-made function. 
+
+\item[(c)] (The number of places you are staying that have laundry service.)
+
+\texttt{int}: I would use integers to store this value because the number of places having laundry service can not have decimal values. Using integers over floats gives us the advantage of speed in calculations. 
+
+\item[(d)] (The names of the cities you will be visiting and the corresponding number of days you are staying in each city.)
+
+\texttt{dict}: I would use dictionaries to store these values because dicts allow me store values in pairs. I would use keys to represent the names of cities I plan to visit and the corresponding values to represent the number of days I spend staying in the city. 
+
+\item[(e)] (Whether or not you have a valid passport.)
+
+\texttt{bool}: I would use booleans to store this value because only two outcomes are possible- \texttt{True} or \texttt{False}. Using booleans over strings will keep my program open to more development. Also booleans use less bits so they work faster than strings.
+\end{enumerate}
+
+
+\item[2.] \textbf{Exploring comprehensions.}
+
+\begin{enumerate}
+\item[(a)]
+\begin{enumerate}
+    \item[i.] This expression evaluates to the list: \texttt{['B', 'l', 'u', 'e', 'b', 'e', 'r', 'r', 'y']}.
+    \item[ii.] The data type of the expression is \texttt{list} and that of its elements is \texttt{str}.
+\end{enumerate}
+\item[(b)]
+\begin{enumerate}
+    \item[i.] This expression evaluates to a set containing the letters of the word \texttt{'Blueberry'} in random order, but with only single iterations of repeated letters \texttt{'e'} and \texttt{'r'}. Such as: \texttt{\{'e', 'b', 'y', 'B', 'l', 'r', 'u'\} or \{'B', 'y', 'u', 'l', 'b', 'r', 'e'\}}.
+    \item[ii.] The data type of the expression is \texttt{set} and that of its elements is \texttt{str}.
+    \item[iii.] The value in part (b) has 2 lesser elements than the value in part (a), this is because sets do not allow elements to repeat and automatically delete duplicate entries. Another key difference is the randomness of elements in part (b), this is because sets are unordered collections.
+\end{enumerate}
+\item[(c)]
+Expression 1 evaluates to \texttt{['David!', 'Tom!', 'Mario!']}, while Expression 2 evaluates to \texttt{['David', 'Tom', 'Mario', '!', '!', '!']}. This is because lists are ordered data types, when they are added or concatenated they simply merge one after another. In expression 1 we defined each element as \texttt{name + '!'} so the list contains each name followed by an exclamation mark as the elements. Meanwhile in expression 2 we concatenated a list containing the names with a list containing exclamation marks, thus generating an odd result.
+\end{enumerate}
+\end{enumerate}
+
+\section*{Part 2: Programming Exercises}
+
+Complete this part in the provided \texttt{a1\_part2.py} starter file.
+Do \textbf{not} include your solution in this LaTeX file.
+
+\section*{Part 3: Pytest Debugging Exercise}
+
+% TIP: In LaTeX, the underscore (_) is a special character, so if you want to use it
+% in normal text, you have to put a backslash in front of it. E.g., a1\_part2.py,
+% not a1_part2.py.
+
+\begin{enumerate}
+\item[1.]
+\texttt{test\_single\_bill(): Passed \newline
+test\_two\_customers(): Failed \newline
+test\_just\_food(): Failed}
+
+\item[2.]
+\texttt{Error 1}- In the definition of function \texttt{calculate\_total\_cost(menu\_amount: float, songs: int)} it is stated that the function takes the \texttt{menu\_amount} as the first parameter and \texttt{songs} as the second parameter. The function body then goes on to make the calculations by finding tax and tips values using \texttt{menu\_amount} and song amount by using parameter \texttt{songs}. However, the return statement of function \texttt{get\_largest\_bill()} states \newline \texttt{"return max([calculate\_total\_cost(bill['songs'], bill['food']) for bill in bills])"}. Here the return statement calls the function \texttt{calculate\_total\_cost()} by providing \texttt{bill['songs']} as the first parameter and \texttt{bill['food']} as the second parameter, thus reversing the parameters and feeding in wrong values. This is the reason we get a actual value different from expected in \texttt{test\_just\_food()}, thus generation an \texttt{AssertionError}. \newline \newline
+\texttt{Error 2}- The body of \texttt{test\_two\_customers()} defines bills as \texttt{bills = [\{'Food': 15.0, 'Songs': 3\}, \{'Food': 16.2, 'Songs': 2\}]}. But the docstring of function \newline \texttt{get\_largest\_bill()} tells us that the keys of bills are supposed to be \texttt{'food'} and \texttt{'songs'} which we use to extract the values from dictionary bills. Python is a case-sensitive language so it considers \texttt{'Food'} or \texttt{'Songs'} different from \texttt{'food'} or \texttt{'songs'}, thus it generates a \texttt{KeyError}.
+
+\item[3.]
+\texttt{test\_single\_bill()} passed because \texttt{bill['food']} and \texttt{bill['songs']} have the same value, thus interchanging \texttt{menu\_amount} and \texttt{songs} in function \texttt{calculate\_total\_cost()} does not mess up the calculations, giving the same actual and expected values.
+\end{enumerate}
+
+\section*{Part 4: Colour Rows}
+
+Complete this part in the provided \texttt{a1\_part4.py} starter file.
+Do \textbf{not} include your solution in this LaTeX file.
+
+\section*{Part 5: Working with Image Data}
+
+Complete this part in the provided \texttt{a1\_part5.py} starter file.
+Do \textbf{not} include your solution in this LaTeX file.
+
+\end{document}
