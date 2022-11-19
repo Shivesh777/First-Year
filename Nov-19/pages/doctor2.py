@@ -4,7 +4,7 @@
 # import cv2
 # import numpy as np
 import streamlit as st
-import graphviz as graphviz
+# import graphviz as graphviz
 # import matplotlib.pyplot as plt
 # import tensorflow as tf
 # from appwrite.client import Client
@@ -43,38 +43,38 @@ st.image(u, width=150)
 
 # Display markdown content
 st.markdown(
-    f'<h1 style="color:#000000;font-size:35px;">{"Doctor"}</h1>',
+    f'<h1 style="color:#000000;font-size:35px;">{"Doctor2"}</h1>',
     unsafe_allow_html=True,
 )
 st.markdown(
     f'<h1 style="color:#000000;font-size:24px;">{"Witness the magic by simply uploading an image below and let our model do the talking."}</h1>',
     unsafe_allow_html=True,
 )
-st.markdown(
-    f'<h1 style="color:#000000;font-size:18px;">{"Please upload your file below:"}</h1>',
-    unsafe_allow_html=True,
-)
+# st.markdown(
+#     f'<h1 style="color:#000000;font-size:18px;">{"Please upload your file below:"}</h1>',
+#     unsafe_allow_html=True,
+# )
 
-file = st.file_uploader("", type=["jpg", "png"])
+# file = st.file_uploader("", type=["jpg", "png"])
 
 # plt.plot(np.array([0, 0.5, 1]), np.array([0, 0.5, 1]))
 # plt.show()
 
 # st.line_chart(np.array([0, 0.5, 1]))
 
-graph = graphviz.Digraph()
-
-graph.edge('Med', 'Dis')
-
-graph.edge('Med', 'S1')
-
-graph.edge('Med', 'S2')
-
-graph.edge('S1', 'Med for S1')
-
-graph.edge('S2', 'Med for S2')
-
-st.graphviz_chart(graph)
+# graph = graphviz.Digraph()
+#
+# graph.edge('Med', 'Dis')
+#
+# graph.edge('Med', 'S1')
+#
+# graph.edge('Med', 'S2')
+#
+# graph.edge('S1', 'Med for S1')
+#
+# graph.edge('S2', 'Med for S2')
+#
+# st.graphviz_chart(graph)
 
 # def load_to_appwrite():
 #     if file is None:
