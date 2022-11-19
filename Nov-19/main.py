@@ -1,9 +1,36 @@
-import numpy as np
+# import numpy as np
 import streamlit as st
-from PIL import Image
+# from PIL import Image
+# import utils as utl
+from pages import patient
+
+# st.set_page_config(layout="wide", page_title='Navbar sample')
+# st.set_option('deprecation.showPyplotGlobalUse', False)
+# utl.inject_custom_css()
+# utl.navbar_component()
+#
+#
+# def navigation():
+#     route = utl.get_current_route()
+#     if route == "home":
+#         home.load_view()
+#     elif route == "about":
+#         about.load_view()
+#     elif route == "analysis":
+#         analysis.load_view()
+#     elif route == "options":
+#         options.load_view()
+#     elif route == "configuration":
+#         configuration.load_view()
+#     elif route == None:
+#         home.load_view()
+#
+#
+# navigation()
+
 
 u = "https://storage.googleapis.com/rishit-dagli.appspot.com/My_project-1_1.png"
-page_title = "Weed Detech"
+page_title = "Home Screen"
 
 # Set page title and favicon.
 st.set_page_config(page_title=page_title, page_icon=u)
@@ -14,7 +41,7 @@ def add_bg_from_url():
         f"""
          <style>
          .stApp {{
-             background-image: url("https://cdn.discordapp.com/attachments/1041031247935316030/1041226102548467812/Untitled_presentation_1.png");
+             background-image: url("https://i.pinimg.com/originals/1a/ee/5c/1aee5c344846f449350feae457ea350e.jpg");
              background-attachment: fixed;
              background-size: cover
          }}
@@ -30,7 +57,7 @@ u = "https://storage.googleapis.com/rishit-dagli.appspot.com/My_project-1_1.png"
 st.image(u, width=150)
 
 st.markdown(
-    f'<h1 style="color:#000000;font-size:35px;">{"Weed Detech"}</h1>',
+    f'<h1 style="color:#000000;font-size:35px;">{"Home Screen"}</h1>',
     unsafe_allow_html=True,
 )
 st.markdown(
