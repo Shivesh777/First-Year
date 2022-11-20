@@ -27,7 +27,7 @@ def add_bg_from_url():
         f"""
          <style>
          .stApp {{
-             background-image: url("https://i.pinimg.com/originals/1a/ee/5c/1aee5c344846f449350feae457ea350e.jpg");
+             background-image: url("https://cdn.discordapp.com/attachments/1043363043947581533/1043480856150409257/marcel-strauss-iCR53oVMqcs-unsplash.jpg");
              background-attachment: fixed;
              background-size: cover
          }}
@@ -48,10 +48,6 @@ with open(path_to_html, 'r') as f:
 
 ## Show in webpage
 components.html(html_data, height=200)
-
-
-u = "https://storage.googleapis.com/rishit-dagli.appspot.com/My_project-1_1.png"
-st.image(u, width=150)
 
 # Display markdown content
 st.markdown(
