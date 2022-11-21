@@ -17,7 +17,7 @@ please consult our Course Syllabus.
 This file is Copyright (c) 2022 David Liu and Tom Fairgrieve
 """
 # You may uncomment this statement to import the math module in this file
-import math
+# import math
 
 from python_ta.contracts import check_contracts
 
@@ -147,9 +147,9 @@ def rsa_decrypt_block(private_key: tuple[int, int, int], ciphertext: list[int]) 
         - ciphertext != []
         - all({0 <= num < private_key[0] * private_key[1] for num in ciphertext})
 
-    >>> p = (13, 11, 77)
-    >>> c = [59, 26, 40, 105]
-    >>> rsa_decrypt_block(p, c)
+    >>> pk = (13, 11, 77)
+    >>> ciph = [59, 26, 40, 105]
+    >>> rsa_decrypt_block(pk, ciph)
     'shiv'
     """
     p, q, d = private_key
@@ -168,11 +168,13 @@ def rsa_decrypt_block(private_key: tuple[int, int, int], ciphertext: list[int]) 
 
 if __name__ == '__main__':
     import doctest
+
     doctest.testmod(verbose=True)
 
     # When you are ready to check your work with python_ta, uncomment the following lines.
     # (In PyCharm, select the lines below and press Ctrl/Cmd + / to toggle comments.)
     import python_ta
+
     python_ta.check_all(config={
         'max-line-length': 120,
         'disable': ['use-a-generator'],

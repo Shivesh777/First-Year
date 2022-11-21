@@ -41,9 +41,9 @@ def rsa_sign_simple(private_key: tuple[int, int, int],
 
     NOTE: Part (a) asks you to add one specific doctest example here. Don't overlook this!
 
-    >>> p = (23, 59, 115)
+    >>> pk = (23, 59, 115)
     >>> m = 'Cryptography is cool'
-    >>> rsa_sign_simple(p, m)
+    >>> rsa_sign_simple(pk, m)
     1183
     """
     p, q, d = private_key[0], private_key[1], private_key[2]
@@ -240,21 +240,18 @@ def find_collision_len_times_sum(message: str) -> str:
 
     Preconditions:
     - len(message) >= 2
+    - any({ord(c) < 1114111 for c in message})
 
-    >>> find_collision_len_times_sum('hello')
-    'olleh'
-    >>> find_collision_len_times_sum('thoht')
-    'htoht'
+    # >>> find_collision_len_times_sum('hello')
+    # 'ohell'
+    # >>> find_collision_len_times_sum('thoht')
+    # 'tthoh'
     """
-    m = [c for c in message]
-    m.reverse()
-    rev = ''.join(m)
-    l = [x for x in message]
-    l[0], l[1] = l[1], l[0]
-    if rev != message:
-        return rev
-    else:
-        return ''.join(l)
+    m = [ord(c) for c in message]
+    m[0] = m[0] + 1
+    m[-1] = m[-1] - 1
+    characters = [chr(c) for c in m]
+    return ''.join(characters)
 
 
 def test_collision_ascii_to_int() -> None:
@@ -271,7 +268,7 @@ def test_collision_ascii_to_int() -> None:
     """
     private_key = (23, 59, 115)
     m1 = 'hello'
-    m2 = ...  # FILL THIS IN
+    m2 = 'helw<'
 
     # Additional checks for m2
     assert all({ord(c) < 128 for c in m2})
@@ -303,20 +300,28 @@ def find_collision_ascii_to_int(public_key: tuple[int, int], message: str) -> st
           to come up with a different approach.)
         - You may find it useful to review Part 1, Question 1.
     """
+    n = public_key[0]
+    i = ascii_to_int(message) + n
+    b = a4_part3.int_to_base128(i)
+    characters = [chr(c) for c in b]
+    return ''.join(characters)
 
 
 if __name__ == '__main__':
     import doctest
+
     doctest.testmod(verbose=True)
 
     import pytest
+
     pytest.main(['a4_part4.py', '-v'])
 
     # When you are ready to check your work with python_ta, uncomment the following lines.
     # (In PyCharm, select the lines below and press Ctrl/Cmd + / to toggle comments.)
-    # import python_ta
-    # python_ta.check_all(config={
-    #     'max-line-length': 120,
-    #     'disable': ['use-a-generator'],
-    #     'extra-imports': ['a4_part3']
-    # })
+    import python_ta
+
+    python_ta.check_all(config={
+        'max-line-length': 120,
+        'disable': ['use-a-generator'],
+        'extra-imports': ['a4_part3']
+    })
