@@ -241,11 +241,6 @@ def find_collision_len_times_sum(message: str) -> str:
     Preconditions:
     - len(message) >= 2
     - any({ord(c) < 1114111 for c in message})
-
-    # >>> find_collision_len_times_sum('hello')
-    # 'ohell'
-    # >>> find_collision_len_times_sum('thoht')
-    # 'tthoh'
     """
     m = [ord(c) for c in message]
     m[0] = m[0] + 1
