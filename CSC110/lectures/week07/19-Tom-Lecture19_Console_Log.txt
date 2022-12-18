@@ -1,0 +1,39 @@
+PyDev console: starting.
+Python 3.10.6 (v3.10.6:9c7b4bd164, Aug  1 2022, 17:13:48) [Clang 13.0.0 (clang-1300.0.29.30)] on darwin
+# demonstrating modular_inverse from last week
+modular_inverse(3, 88)
+59
+#
+pow(77, 3, 115)
+98
+pow(98, 59, 115)
+77
+#
+n = 50381
+e = 11
+p = 607
+q = 83
+p * q == n
+True
+help(pow)
+Help on built-in function pow in module builtins:
+pow(base, exp, mod=None)
+    Equivalent to base**exp with 2 arguments or base**exp % mod with 3 arguments
+    
+    Some types, such as ints, are able to use a more efficient algorithm when
+    invoked using the three argument form.
+
+d = 9035
+(d * e) % n
+49004
+# OOPS - I should have done % totient(n) not % n  !
+#  see below where (p-1) * (q-1) was used instead of n.  Get 1 as required!
+
+# the student message was: m = 15994
+pow(15994, d, n)
+6969    
+# so m' = 6969 and that matched what the student said was their original message
+#
+(d * e) % ((p - 1) * (q - 1))
+1
+

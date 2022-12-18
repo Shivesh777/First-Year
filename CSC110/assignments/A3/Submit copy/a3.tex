@@ -1,0 +1,44 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+
+\title{CSC110 Fall 2022 Assignment 3: Loops, Mutation, and Applications}
+\author{Shivesh Prakash}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Part 1: Data Analysis with Toronto Health}
+
+Complete this part in the provided \texttt{a3\_part1.py} file.
+Do \textbf{not} include your solutions in this file.
+
+\section*{Part 2: Loops and Mutation Debugging Exercise}
+
+\begin{enumerate}
+\item[1.]
+\texttt{test\_star\_wars PASSED \newline
+test\_legally\_blonde FAILED \newline
+test\_transformers FAILED}
+
+\item[2.]
+(a) The errors were as follows: \newline
+(i) On \texttt{line 83} the \texttt{str.lower()} method does not mutate the string, instead it returns a new string. Thus it was important to assign the variable \texttt{text} to \texttt{str.lower(text)} to use it as such in the next line. In its current form, the function ignored keywords which had uppercase letters. \newline
+(ii) On \texttt{line 99} the "\texttt{occurrences\_so\_far[word] $=$ occurrences\_so\_far[word] $+$ 1}" statement must be written just outside the innermost \texttt{if} statement. In its current form the function was not ignoring the multiple occurrences of keywords. That is, if a certain keyword occurred twice, its occurrence would still be stored as 1 in the current function structure.
+
+\item[3.]
+The errors in the given program will fail only when: \newline
+(i) the keyword has an uppercase letter \newline
+(ii) a keyword is repeated \newline
+In \texttt{review\_star\_wars.csv} no keyword has an uppercase and no keyword is repeated, thus errors in the code had no effect on this file and the test passed. In \texttt{review\_legally\_blonde.csv} some keywords have uppercase letters, so its test failed. In \texttt{review\_transformers.csv} a keyword for repeated which caused its test to fail.
+\end{enumerate}
+
+\section*{Part 3: Chaos, Fractals, Point Sequences}
+
+Complete this part in the provided \texttt{a3\_part3.py} starter file.
+Do \textbf{not} include your solutions in this file.
+
+\end{document}

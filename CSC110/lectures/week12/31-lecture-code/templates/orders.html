@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SchoolEats - Orders</title>
+</head>
+<body>
+
+<h1>Orders</h1>
+
+<p>Here's a list of all orders made.</p>
+
+<ul>
+{% for order in orders %}
+<li>({{ order.start_time }})
+    <em>{{ order.customer.name }}</em> placed an order from <em>{{ order.vendor.name }}</em>.
+    <ul>
+        <li>Items ordered: {{ order.food_items }}</li>
+        <li>Assigned to <em>{{ order.courier.name }}</em></li>
+    </ul>
+</li>
+{% endfor %}
+</ul>
+</body>
+</html>

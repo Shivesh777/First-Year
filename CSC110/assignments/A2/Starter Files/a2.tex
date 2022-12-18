@@ -1,0 +1,66 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+
+\title{CSC110 Fall 2022 Assignment 2: Logic, Constraints, and Wordle!}
+\author{TODO: FILL IN YOUR NAME HERE}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Part 1: Conditional Execution}
+
+Complete this part in the provided \texttt{a2\_part1\_q1\_q2.py} and \texttt{a2\_part1\_q3.py} starter files.
+Do \textbf{not} include your solutions in this file.
+
+\section*{Part 2: Proof and Algorithms, Greatest Common Divisor edition}
+
+\begin{enumerate}
+\item[1.]
+
+TODO: Write your answer to Question 1 here.
+
+\item[2.]
+
+TODO: Write your answer to Question 2 here.
+
+\item[3.]
+
+\begin{proof}
+TODO: Write your answer to Question 3 here.
+
+\end{proof}
+
+\item[4.]
+
+TODO: Write your answer to Question 4 here.
+Make sure complete the code that has been provided below (as you will \emph{not} be submitting a Python file for this part of the assignment).
+
+\begin{verbatim}
+def gcd(n: int, m: int) -> int:
+    """Return the greatest common divisor of m and n.
+
+    Preconditions:
+    - 1 <= m <= n
+    """
+    r = n % d
+
+    if r == 0:
+        ...
+    else:
+        possible_divisors = ...
+        common_divisors = {d for d in possible_divisors if divides(d, n) and divides(d, m)}
+        return max(common_divisors)
+\end{verbatim}
+\end{enumerate}
+
+
+\section*{Part 3: Wordle!}
+
+Complete this part in the provided \texttt{a2\_part3.py} starter file.
+Do \textbf{not} include your solutions in this file.
+
+\end{document}

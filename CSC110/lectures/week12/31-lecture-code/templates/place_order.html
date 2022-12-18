@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SchoolEats - Place Order</title>
+</head>
+<body>
+
+<h1>Place Order: {{ vendor.name }}</h1>
+
+<form method="post" action="place_order">
+    <input type="hidden" id="vendor-name" name="vendor-name" value="{{ vendor.name }}" />
+
+    <p>
+        <label for="customer-name">What's your name?</label>
+        <input type="text" id="customer-name" name="customer-name" required />
+    </p>
+
+    {% for name, price in vendor.menu.items() %}
+    <p>
+        <label for="{{ name }}-quantity">{{ name }} (${{ price }})</label>
+        <input type="number" name="{{ name }}-quantity" id="{{ name }}-quantity" min="0" />
+    </p>
+    {% endfor %}
+
+    <p>
+        <button type="submit">Place Order</button>
+    </p>
+</form>
+
+</body>
+</html>

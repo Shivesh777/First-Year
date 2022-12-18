@@ -1,0 +1,115 @@
+>>> 4 + 5
+9
+>>> 'David' + 'Liu'
+'DavidLiu'
+>>> 'David' * 100
+'DavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavidDavid'
+>>> 4
+4
+>>> 3 + 4
+7
+>>> 3 ** 4
+81
+>>> 2 ** 3
+8
+>>> 2 + 3.0
+5.0
+>>> not (5 * 2 > 3)
+False
+>>> 'hello' + 'CSC110'
+'helloCSC110'
+>>> 'hello ' + 'CSC110'
+'hello CSC110'
+>>> 'hello'[1]
+'e'
+>>> 'hello'[0]
+'h'
+>>> {1, 2, 3}
+{1, 2, 3}
+>>> {1, 2, 3} == {3, 2, 1}
+True
+>>> 1 in {1, 2, 3}
+True
+>>> 4 in {1, 2, 3}
+False
+>>> {1, 2} in {1, 2, 3}
+False
+>>> [1, 2, 3]
+[1, 2, 3]
+>>> [1, 2, 3] == [3, 2, 1]
+False
+>>> 1 in [1, 2, 3]
+True
+>>> 4 in [1, 2, 3]
+False
+>>> [1, 2, 3] + [11, 110, 111]
+[1, 2, 3, 11, 110, 111]
+>>> [10, 110, 111][0]
+10
+>>> {'Toronto': 2.8, 'Ottawa': 1.0}
+{'Toronto': 2.8, 'Ottawa': 1.0}
+>>> {'Toronto': 2.8, 'Ottawa': 1.0} == {'Ottawa': 1.0, 'Toronto': 2.8}
+True
+>>> {'Toronto': 2.8, 'Ottawa': 1.0} == {'Ottawa': 2.8, 'Toronto': 1.0}
+False
+>>> 'Toronto' in {'Toronto': 2.8, 'Ottawa': 1.0}
+True
+>>> 'oronto' in {'Toronto': 2.8, 'Ottawa': 1.0}
+False
+>>> 2.8 in {'Toronto': 2.8, 'Ottawa': 1.0}
+False
+>>> {'Toronto': 2.8, 'Ottawa': 1.0}['Toronto']
+2.8
+>>> {'Toronto': 2.8, 'Ottawa': 1.0}[2.8]
+Traceback (most recent call last):
+  File "C:\Users\David\AppData\Local\Programs\Python\Python310\lib\code.py", line 90, in runcode
+    exec(code, self.locals)
+  File "<input>", line 1, in <module>
+KeyError: 2.8
+>>> {'Toronto': 2.8, 'Toronto': 1.0}
+{'Toronto': 1.0}
+>>> {'Toronto': 2.8, 'Ottawa': 2.8}
+{'Toronto': 2.8, 'Ottawa': 2.8}
+>>> ['hi', 'bye'][0]
+'hi'
+>>> {1, 'hi', False}
+{False, 1, 'hi'}
+>>> {}
+{}
+>>> type({})
+<class 'dict'>
+>>> x = 10
+>>> x
+10
+>>> city_populations = {'Toronto': 2.8, 'Ottawa': 1.0}
+>>> city_populations
+{'Toronto': 2.8, 'Ottawa': 1.0}
+>>> city_populations['Toronto']
+2.8
+>>> n = 10 + 30
+>>> n
+40
+>>> m = city_populations[2.8]
+Traceback (most recent call last):
+  File "C:\Users\David\AppData\Local\Programs\Python\Python310\lib\code.py", line 90, in runcode
+    exec(code, self.locals)
+  File "<input>", line 1, in <module>
+KeyError: 2.8
+>>> m
+Traceback (most recent call last):
+  File "C:\Users\David\AppData\Local\Programs\Python\Python310\lib\code.py", line 90, in runcode
+    exec(code, self.locals)
+  File "<input>", line 1, in <module>
+NameError: name 'm' is not defined
+>>> a = 3
+>>> b = 7 * a
+>>> c = [1, a, b]
+>>> d = c[0] + a
+>>> a
+3
+>>> b
+21
+>>> c
+[1, 3, 21]
+>>> d
+4

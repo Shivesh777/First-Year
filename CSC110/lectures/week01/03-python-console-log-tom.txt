@@ -1,0 +1,121 @@
+PyDev console: starting.
+Python 3.10.6 (v3.10.6:9c7b4bd164, Aug  1 2022, 17:13:48) [Clang 13.0.0 (clang-1300.0.29.30)] on darwin
+{1, 'hi', True}
+{1, 'hi'}
+
+{True, 'hi', 1}
+{True, 'hi'}
+
+nums = {5, 9, 11}
+[ x ** 2 for x in nums]
+[81, 121, 25]
+
+[ x ** 2 for x in list(nums)]
+[81, 121, 25]
+
+{1 / x for x in range(1, 21)}
+{0.5, 1.0, 0.2, 0.3333333333333333, 0.25, 0.14285714285714285, 0.125, 0.1111111111111111, 0.0625, 0.07692307692307693, 0.05263157894736842, 0.06666666666666667, 0.08333333333333333, 0.05, 0.16666666666666666, 0.1, 0.09090909090909091, 0.05555555555555555, 0.07142857142857142, 0.058823529411764705}
+
+s = 'nonsense' * 8
+s
+'nonsensenonsensenonsensenonsensenonsensenonsensenonsensenonsense'
+[ c for c in s]
+['n', 'o', 'n', 's', 'e', 'n', 's', 'e', 'n', 'o', 'n', 's', 'e', 'n', 's', 'e', 'n', 'o', 'n', 's', 'e', 'n', 's', 'e', 'n', 'o', 'n', 's', 'e', 'n', 's', 'e', 'n', 'o', 'n', 's', 'e', 'n', 's', 'e', 'n', 'o', 'n', 's', 'e', 'n', 's', 'e', 'n', 'o', 'n', 's', 'e', 'n', 's', 'e', 'n', 'o', 'n', 's', 'e', 'n', 's', 'e']
+
+[c for c in s[0:20]]
+['n', 'o', 'n', 's', 'e', 'n', 's', 'e', 'n', 'o', 'n', 's', 'e', 'n', 's', 'e', 'n', 'o', 'n', 's']
+
+{(a, b) for a in {1, 2} for b in {10, 20}}
+{(2, 20), (2, 10), (1, 20), (1, 10)}
+
+# builtin function demo
+abs(42)
+42
+
+abs(-42)
+42
+
+abs(-3.154)
+3.154
+
+abs(3.145)
+3.145
+
+len('abracadabra')
+11
+
+len([1,2,3,4,5,6,6])
+7
+
+len({1:2, 2:3, 4:67})
+3
+
+sum({1, 5, 9, 11})
+26
+
+sum([])
+0
+
+sort({3, 1, 8, 9, -3})
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/code.py", line 90, in runcode
+    exec(code, self.locals)
+  File "<input>", line 1, in <module>
+NameError: name 'sort' is not defined. Did you mean: 'sorted'?
+
+sorted({3, 1, 8, 9, -3})
+[-3, 1, 3, 8, 9]
+
+max({3, 1, 8, 9, -3})
+9
+
+max(3, 1, 8, 9, -3)
+9
+
+max(3, 1, 8, 9, -3, -42, 1983.5)
+1983.5
+
+type(1.2345)
+<class 'float'>
+
+type('hello')
+<class 'str'>
+
+type({})
+<class 'dict'>
+
+type(set())
+<class 'set'>
+
+help(abs)
+Help on built-in function abs in module builtins:
+abs(x, /)
+    Return the absolute value of the argument.
+
+def square(x):
+    return x * x
+
+square(4)
+16
+
+# fahrenheit to celsius
+(80 - 32) * 5 / 9
+26.666666666666668
+(0 - 32) * 5 / 9
+-17.77777777777778
+
+runfile('...')
+fahrenheit_to_celsius(80.0)
+26.666666666666668
+
+help(fahrenheit_to_celsius)
+Help on function fahrenheit_to_celsius in module __main__:
+fahrenheit_to_celsius(deg_f: float) -> float
+    Return the celsius temperature corresponding to
+    to the fahrenhit measure deg_f.
+    
+    >>> fahrenheit_to_celsius(80.0)
+    26.666666666666668
+    >>> fahrenheit_to_celsius(0.0)
+    -17.77777777777778
+

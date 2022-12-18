@@ -1,0 +1,10 @@
+# CSC110Y1F: Python libraries we'll be using this semester.
+
+# Testing and code checking
+hypothesis
+pytest
+python-ta
+
+# Graphics and data visualization
+plotly
+pygame

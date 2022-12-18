@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\newcommand{\code}[1]{\texttt{#1}}
+\usepackage{amssymb}
+
+\title{CSC110 Fall 2022 Assignment 2: Logic, Constraints, and Wordle!}
+\author{Shivesh Prakash}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Part 1: Conditional Execution}
+
+Complete this part in the provided \code{a2\_part1\_q1\_q2.py} and \code{a2\_part1\_q3.py} starter files.
+Do \textbf{not} include your solutions in this file.
+
+\section*{Part 2: Proof and Algorithms, Greatest Common Divisor edition}
+
+\begin{enumerate}
+\item[1.]
+
+As stated and proved in Lecture 9, for all positive integers \code{n} and \code{d}, if \code{d | n} then $d \leq n$. So no common divisor of \code{m} and \code{n} can be greater than either \code{m} or \code{n}. Since $m \leq n$, no common divisor can be greater than \code{m}. Therefore, we use \code{range(1, m + 1)} to find possible common divisors in this approach.
+
+\item[2.]
+
+As stated and proved in Lecture 9, every integer is divisible by 1. So the set \code{common\_divisors} can never be empty it always contains \code{1}. Also range(1, m + 1) always includes \code{1}. Therefore we can safely use the \code{max()} function on set \code{common\_divisors} without checking whether it is empty or not.
+
+\item[3.]
+
+\begin{proof}
+
+To prove: $\forall n m d \in Z d \mid m \cap m \ne 0 \implies ( d \mid n \iff d \mid (n \% m ))$ \\
+
+Let $n, m, d \in$ Z. \\
+
+To prove the implication, we assume $d \mid m \cap m \ne 0$ to be true. Now to prove the "if and only if" statement I will first prove $d \mid n \implies d \mid (n \% m)$. Based on Quotient-Remainder theorem, n on division by m gives: $n = qm + r$, where q is the quotient and r is the remainder. Rearranging this equation we get $r = n - qm$, which is of the form $an + bm$ from the given property. The given property states: $\forall n, m, d, a, b \in Z, d \mid n \cap d \mid m \implies d \mid (an + bm)$. Clearly d divides n and m so d divides $r = n - qm$, using the given property with $a = 1 and b = -1$. Therefore $d \mid n \implies d \mid (n \% m)$ is proven, let us now prove  $d \mid (n \% m) \implies d \mid n$. To prove this let us assume d divides the remainder obtained when n is divided by m, that is, d divides  $r = n - qm$. Rearranging this equation we get $n = r + qm$, which is of the form $an + bm$ from the given property. Clearly d divides m and r so d divides $n = r + qm$, using the given property with $a = 1 and b = q$. Therefore $d \mid (n \% m) \implies d \mid n$ and $(d \mid n \iff d \mid (n \% m )$ is proven. Thus, $\forall n, m, d \in Z, d \mid m \cap m \ne 0 \implies (d \mid n \iff d \mid (n \% m )$ is proven to be true.
+
+
+\end{proof}
+
+\item[4.]
+
+If n divides m, then m itself is the greatest common divisor since no divisor of m can be greater than m. If m does not divide n, it will not show up in common\_divisors so m can be removed from the range of possible\_divisors. So m is returned if m divides m and m is removed from the range of possible\_divisors in the else part of the function. Thus, the final code is as follows --
+
+\begin{verbatim}
+def gcd(n: int, m: int) -> int:
+    """Return the greatest common divisor of m and n.
+
+    Preconditions:
+    - 1 <= m <= n
+    """
+    r = n % m
+
+    if r == 0:
+        return m
+    else:
+        possible_divisors = range(1, m)
+        common_divisors = {d for d in possible_divisors if divides(d, n) and divides(d, m)}
+        return max(common_divisors)
+\end{verbatim}
+\end{enumerate}
+
+
+\section*{Part 3: Wordle!}
+
+Complete this part in the provided \code{a2\_part3.py} starter file.
+Do \textbf{not} include your solutions in this file.
+
+\end{document}

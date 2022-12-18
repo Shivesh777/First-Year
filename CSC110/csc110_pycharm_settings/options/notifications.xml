@@ -1,0 +1,6 @@
+<application>
+  <component name="NotificationConfiguration">
+    <notification groupId="Code style settings migration" displayType="NONE" shouldLog="false" />
+    <notification groupId="Find Problems" displayType="NONE" shouldLog="false" />
+  </component>
+</application>

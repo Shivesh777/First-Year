@@ -1,0 +1,39 @@
+Python 3.10.6 (v3.10.6:9c7b4bd164, Aug  1 2022, 17:13:48) [Clang 13.0.0 (clang-1300.0.29.30)] on darwin
+import math
+math.sqrt(3.0)
+1.7320508075688772
+math.dist([0, 0, 0], [1, 1, 1])
+1.7320508075688772
+help(math.dist)
+Help on built-in function dist in module math:
+dist(p, q, /)
+    Return the Euclidean distance between two points p and q.
+    
+    The points should be specified as sequences (or iterables) of
+    coordinates.  Both inputs must have the same dimension.
+    
+    Roughly equivalent to:
+        sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))
+help(math.sqrt)
+Help on built-in function sqrt in module math:
+sqrt(x, /)
+    Return the square root of x.
+dir(math)
+['__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'comb', 'copysign', 'cos', 'cosh', 'degrees', 'dist', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'gcd', 'hypot', 'inf', 'isclose', 'isfinite', 'isinf', 'isnan', 'isqrt', 'lcm', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'log2', 'modf', 'nan', 'nextafter', 'perm', 'pi', 'pow', 'prod', 'radians', 'remainder', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'tau', 'trunc', 'ulp']
+help(math.acos)
+Help on built-in function acos in module math:
+acos(x, /)
+    Return the arc cosine (measured in radians) of x.
+    
+    The result is between 0 and pi.
+
+math.asin(1.0) - math.pi / 2 == 0.0
+True
+# I wish I had not done thise : help(math.pi)
+# as the answer is distracting and not helpful ...
+#
+# math.pi is the float value that is closest to the irrational number PI
+
+is_even(42)
+True
+

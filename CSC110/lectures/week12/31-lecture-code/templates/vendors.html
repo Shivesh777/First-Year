@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SchoolEats - Food Vendors</title>
+</head>
+<body>
+
+<h1>Food Vendors</h1>
+
+<p>Here's a list of all available grocery stores and restaurants.</p>
+
+{% for vendor in vendors %}
+<p>
+    <strong>{{ vendor.name }}</strong>
+    ({{ vendor.address }})
+    <a href="{{ url_for('place_order', vendor=vendor.name) }}">Place order</a>
+
+    <ul>
+    {% for name, price in vendor.menu.items() %}
+        <li>{{name}}: ${{price}}</li>
+    {% endfor %}
+    </ul>
+</p>
+{% endfor %}
+
+</body>
+</html>

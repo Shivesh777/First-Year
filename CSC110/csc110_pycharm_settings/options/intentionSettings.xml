@@ -1,0 +1,38 @@
+<application>
+  <component name="IntentionManagerSettings">
+    <ignoreAction name="Python/Add type hint for variable" />
+    <ignoreAction name="Python/Add type hints for function" />
+    <ignoreAction name="Python/Convert 'from module import' to 'import module'" />
+    <ignoreAction name="Python/Convert 'import module' to 'from module import'" />
+    <ignoreAction name="Python/Convert absolute import to relative" />
+    <ignoreAction name="Python/Convert between single-quoted and double-quoted strings" />
+    <ignoreAction name="Python/Convert collection to list" />
+    <ignoreAction name="Python/Convert collection to set" />
+    <ignoreAction name="Python/Convert collection to tuple" />
+    <ignoreAction name="Python/Convert dict constructor to dict literal form" />
+    <ignoreAction name="Python/Convert dict literal to dict constructor" />
+    <ignoreAction name="Python/Convert format operator usage to str.format method call" />
+    <ignoreAction name="Python/Convert from variadic to normal parameter(s)" />
+    <ignoreAction name="Python/Convert lambda to function" />
+    <ignoreAction name="Python/Convert list comprehensions to for loop" />
+    <ignoreAction name="Python/Convert method to property" />
+    <ignoreAction name="Python/Convert relative import to absolute" />
+    <ignoreAction name="Python/Convert static method to function" />
+    <ignoreAction name="Python/Convert to f-string literal" />
+    <ignoreAction name="Python/Convert triple-quoted string to single-quoted string" />
+    <ignoreAction name="Python/Convert type comment to variable annotation" />
+    <ignoreAction name="Python/DeMorgan law" />
+    <ignoreAction name="Python/Flip comparison" />
+    <ignoreAction name="Python/Insert documentation string stub" />
+    <ignoreAction name="Python/Insert type assertion" />
+    <ignoreAction name="Python/Join if's" />
+    <ignoreAction name="Python/Negate comparison" />
+    <ignoreAction name="Python/Replace string concatenation with format operator" />
+    <ignoreAction name="Python/Specify type for reference in docstring" />
+    <ignoreAction name="Python/Specify type for reference using annotation" />
+    <ignoreAction name="Python/Split if" />
+    <ignoreAction name="Python/Toggle import alias" />
+    <ignoreAction name="Python/Transform conditional expression into if/else statement" />
+    <ignoreAction name="Python/Transform explicit iteration with 'yield' into 'yield from' expression" />
+  </component>
+</application>
