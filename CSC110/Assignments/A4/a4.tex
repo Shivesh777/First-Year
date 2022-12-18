@@ -1,0 +1,221 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+
+% This defines a new LaTeX *macro* (you can think of as a function)
+% for writing the floor of an expression.
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+
+\title{CSC110 Fall 2022 Assignment 4: Number Theory, Cryptography, and Algorithm Running Time Analysis}
+\author{Shivesh Prakash}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+
+\section*{Part 1: Proofs}
+
+\begin{enumerate}
+\item[1.] Statement to prove:
+$\forall a, b, n \in \mathbb{Z},~ \big(n \neq 0 \land a \equiv b \pmod n \big) \Rightarrow \big(\forall m \in \mathbb{Z},~ a \equiv b + mn \pmod n\big)$
+\newline\newline\newline
+Definition of divisibility: $d ~ \vert ~ n \iff \exists k \in \mathbb{Z}, n = dk ~ where ~ n, d \in \mathbb{Z}$ \newline
+Definition of modular equivalence: $a \equiv b \pmod n \iff n ~ \vert ~ a - b$
+\begin{proof}
+Fix $a, b, n \in \mathbb{Z}$. \newline
+Let us assume that $n \neq 0$ and $a \equiv b \pmod n$. \newline
+Fix $m \in \mathbb{Z}$. \newline
+Since $a \equiv b \pmod n$, using definition of modular equivalence and divisibility, \newline there exists an integer $k = k_{1}$ such that $a - b = nk_{1}$. \newline
+Subtracting $mn$ on both sides of this equation gives: 
+\begin{gather*}
+a - b - mn = nk_{1} - mn \\
+\implies a - b - mn = n(k_{1} - m)
+\end{gather*}
+Since $k_{1}, m \in \mathbb{Z}$, $k_{1} - m \in \mathbb{Z}$. Let $k_{2}= k_{1} - m$, observe that $k_{2}, m \in \mathbb{Z}$. \newline
+Thus the equation becomes: \newline
+\begin{gather*}
+a - b - mn = nk_{2} \\
+\implies a - (b + mn) = nk_{2} \\
+\implies n ~ \vert ~ a - (b + mn) \\
+\implies a \equiv b + mn \pmod n
+\end{gather*}
+\end{proof}
+
+\newpage
+
+\item[2.] Statement to prove:
+$
+\forall f, g: \mathbb{N} \to \mathbb{R}^{\geq 0},~
+\Big(g \in \mathcal{O}(f) \land \big(\forall m \in \mathbb{N},~ f(m) \geq 1) \Big) \Rightarrow
+g \in \mathcal{O}(\floor{f})
+$
+\newline \newline \newline
+Definition of $g \in \mathcal{O}(f)$: $\exists c, n_{0} \in \mathbb{R}^+ ~ s.t ~ \forall n \in \mathbb{N}, n \geq n_{0} \implies g(n) \leq c \cdot f(n)$
+\begin{proof}
+Fix $f, g: \mathbb{N} \to \mathbb{R}^{\geq 0}$. \newline
+Let us assume that $g \in \mathcal{O}(f)$ and $\forall m \in \mathbb{N},~ f(m) \geq 1$. \newline
+That means: $\exists c_{1}, n_{01} \in \mathbb{R}^+ ~ s.t ~ \forall n \in \mathbb{N}, n \geq n_{01} \implies g(n) \leq c_{1} \cdot f(n)$. \newline
+Also $\forall m \in \mathbb{N}$, $f(m) \geq 1 \implies \floor{f(m} \geq 1$, from the definition of floor function. \newline
+A property of floor function states that: $\forall x \in \mathbb{R}, \floor{x} \leq x < \floor{x} + 1$. \newline
+Substituting $f(n)$ for $x$, this gives the inequality: $\floor{f(n)} \leq f(n) < \floor{f(n)} + 1$. \newline
+Observe that $c_{1}$ is positive, multiplying $c_{1}$ on all parts of the above inequality gives us:
+\begin{gather*}
+c_{1} \cdot \floor{f(n)} \leq c_{1} \cdot f(n) < c_{1} \cdot (\floor{f(n)} + 1) \\
+\implies c_{1} \cdot f(n) < c_{1} \cdot \floor{f(n)} + c_{1} \\
+\implies c_{1} \cdot f(n) < (c_{1} + \frac{c_{1}}{\floor{f(n)}}) \cdot \floor{f(n)}
+\end{gather*}
+Let $c_{1} + \frac{c_{1}}{\floor{f(n)}}$ be represented by $c_{2}$. Since $c_{1} \in \mathbb{R}^+$ and $n \in \mathbb{N}$, $c_{2} \in \mathbb{R}^+$. \newline
+Modifying the definition statement of $g \in \mathcal{O}(f)$ with the inequality:
+\begin{gather*}
+\exists c_{1}, n_{01} \in \mathbb{R}^+ ~ s.t ~ \forall n \in \mathbb{N}, n \geq n_{01} \implies g(n) \leq c_{1} \cdot f(n) < (c_{1} + \frac{c_{1}}{\floor{f(n)}}) \cdot \floor{f(n)} \\
+\implies \exists c_{2}, n_{01} \in \mathbb{R}^+ ~ s.t ~ \forall n \in \mathbb{N}, n \geq n_{01} \implies g(n) \leq c_{2} \cdot \floor{f(n)} \\
+\implies g \in \mathcal{O}(\floor{f})
+\end{gather*}
+\end{proof}
+\end{enumerate}
+
+\newpage
+
+
+\section*{Part 2: Running-Time Analysis}
+
+\begin{enumerate}
+\item[1.]
+Function to analyse:
+
+\begin{verbatim}
+def f1(n: int) -> int:
+    """Precondition: n >= 0"""
+    total = 0
+
+    for i in range(0, n):  # Loop 1
+        total += i ** 2
+
+    for j in range(0, total):  # Loop 2
+        print(j)
+
+    return total
+\end{verbatim}
+
+The statement assigning \texttt{total} to \texttt{0} takes 1 step. The statement under \texttt{Loop 1} take 1 step and the loop runs \texttt{n} times, thus \texttt{Loop 1} takes a total of n steps. After \texttt{Loop 1} the value of \texttt{total} is sum of squares of first \texttt{(n-1)} integers. From Appendix C.1, this is equivalent to $\frac{(n-1)(n)(2n-1)}{6}$. The statement under \texttt{Loop 2} take 1 step and the loop runs \texttt{total =} $\frac{(n-1)(n)(2n-1)}{6}$ times, thus \texttt{Loop 2} takes a total of $\frac{(n-1)(n)(2n-1)}{6}$ steps. Hence the function runs a total of $1 + n + \frac{(n-1)(n)(2n-1)}{6}$ times. This expression is equivalent to $\frac{n^3}{3} - \frac{n^2}{2} + 7n + 6$, which $\in \Theta(n^3)$. Thus from our running-time analysis, the exact expression for $RT_{func}(n)$ is $\frac{n^3}{3} - \frac{n^2}{2} + 7n + 6$, which $\in \Theta(n^3)$.
+\newpage
+
+
+\item[2.]
+Function to analyse:
+
+\begin{verbatim}
+def f2(n: int) -> int:
+    """Precondition: n >= 0"""
+    sum_so_far = 0
+
+    for i in range(0, n):  # Loop 1
+        sum_so_far += i
+
+        if sum_so_far >= n:
+            return sum_so_far
+
+    return 0
+\end{verbatim}
+
+The statement assigning \texttt{sum\_so\_far} to \texttt{0} takes 1 step. The innermost \texttt{if} loop early returns when \texttt{sum\_so\_far} exceeds \texttt{n}. After \texttt{k + 1} iterations of \texttt{for Loop 1}, \texttt{sum\_so\_far} is $\frac{(k)(k + 1)}{2}$. \newline For this to be $\geq$ \texttt{n} $\implies$
+\begin{gather*}
+\frac{(k)(k + 1)}{2} \geq n \\
+\implies k^2 + k \geq 2n  \\
+\implies k^2 + k - 2n \geq 0 \\
+\implies k \geq \frac{-1 + \sqrt{1 + 8n}}{2} \textit{ or } k \leq \frac{-1 - \sqrt{1 + 8n}}{2}\\
+\implies k \geq \sqrt{\frac{1}{4} + 2n} - \frac{1}{2} \textit{ Since number of iterations must be positive}
+\end{gather*}
+This is calculated using quadratic formula while ensuring that \texttt{k} is positive and less than \texttt{n}. \newline To maintain \texttt{k} as an integer and taking into account $\geq$ \texttt{n} for the expression, finally \newline we take \texttt{k} as $\lceil \sqrt{\frac{1}{4} + 2n} - \frac{1}{2} \rceil$. Hence the function runs for a total of $1 + (k+1) + 1$ times. This expression is equivalent to $ 3 + \lceil \sqrt{\frac{1}{4} + 2n} - \frac{1}{2} \rceil$, which $\in \Theta(\sqrt{n})$. Thus from our running-time analysis, the exact expression for $RT_{func}(n)$ is $3 + \lceil \sqrt{\frac{1}{4} + 2n} - \frac{1}{2} \rceil$, which $\in \Theta(\sqrt{n})$. 
+\end{enumerate}
+
+\newpage
+
+\section*{Part 3: Extending RSA}
+
+Complete this part in the provided \texttt{a4\_part3.py} starter file.
+Do \textbf{not} include your solutions in this file.
+
+\section*{Part 4: Digital Signatures}
+
+\subsection*{Part (a): Introduction}
+
+Complete this part in the provided \texttt{a4\_part4.py} starter file.
+Do \textbf{not} include your solutions in this file.
+
+\subsection*{Part (b): Generalizing the message digests}
+
+Complete most of this part in the provided \texttt{a4\_part4.py} starter file.
+Do \textbf{not} include your solutions in this file, \emph{except} for the following two questions:
+
+\begin{enumerate}
+
+\item[3b.]
+
+\begin{verbatim}
+def find_collision_len_times_sum(message: str) -> str:
+
+    """Return a new message, not equal to the given message, that can be verified 
+    using the same signature when using the RSA digital signature scheme with 
+    the len_times_sum message digest.
+
+    Preconditions:
+    - len(message) >= 2
+    - any({ord(c) < 1114111 for c in message})
+    """
+    m = [ord(c) for c in message]
+    m[0] = m[0] + 1
+    m[-1] = m[-1] - 1
+    characters = [chr(c) for c in m]
+    return ''.join(characters)
+\end{verbatim}
+
+The idea here is to return a string of the same length and same sum of \texttt{ord()} values for each character. I have achieved this by adding and subtracting \texttt{1} to the first and last character of the message respectively. I assigned variable \texttt{m} to the list of \texttt{ord()} values for each character in \texttt{message} by iterating over it. I reassigned the elements of \texttt{m} to modify some \texttt{ord()} values while maintaining their sum as a constant. I assigned variable \texttt{m} to the list of characters to be merged and returned. Lastly, my function returns the string by joining the list of characters using \texttt{str.join()}.
+
+
+\newpage
+
+\item[4b.]
+
+\begin{verbatim}
+def find_collision_ascii_to_int(public_key: tuple[int, int], message: str) -> str:
+
+    """Return a new message, distinct from the given message, that can be verified 
+    using the same signature, when using the RSA digital signature scheme with the 
+    ascii_to_int message digest and the given public_key.
+
+    The returned message must contain only ASCII characters, and cannot contain any 
+    leading chr(0) characters.
+
+    Preconditions:
+    - signature was generated from message using the algorithm in rsa_sign and 
+    digest len_times_sum, with a valid RSA private key
+    - len(message) >= 2
+    - ord(message[0]) > 0
+
+    NOTES:
+        - Unlike the other two "find_collision" functions, this function takes in the 
+        public key used to generate signatures. Use it!
+        - You may NOT simply add leading chr(0) characters to the message string.
+          (While this does correctly produces a collision, we want you to think 
+          a bit harder to come up with a different approach.)
+        - You may find it useful to review Part 1, Question 1.
+    """
+    n = public_key[0]
+    modified_int = ascii_to_int(message) + n
+    num_in_base = a4_part3.int_to_base128(modified_int)
+    characters = [chr(c) for c in num_in_base]
+    return ''.join(characters)
+
+\end{verbatim}
+
+The idea here is to return a string whose signature matches that of \texttt{message}, determined using \texttt{rsa\_sign()}. On inspection of the \texttt{rsa\_sign()} function, it is evident that the \texttt{sign} produced will be same when the \texttt{digest} computed using \texttt{digest = compute\_digest(message) \% n} is the same. For our case, \texttt{compute\_digest() is ascii\_to\_int()}. If  \texttt{ascii\_to\_int(returned\_string)} is of the form \texttt{ascii\_to\_int(message) + mn} where \texttt{m} is an integer and \texttt{n} is the first element of \texttt{public\_key}, then using Proof 1 from Part 1, \texttt{digest} will be the same form \texttt{message} and \texttt{returned\_message}.
+\newline \newline
+In my function, I added \texttt{n} to \texttt{ascii\_to\_int(message)} to implement the concept explained above. Then I used this \texttt{modified\_int} to reverse it into a \texttt{string} using \texttt{a4\_part3.int\_to\_base128()} and \texttt{chr()} along with \texttt{str.join()}.
+
+\end{enumerate}
+\end{document}
